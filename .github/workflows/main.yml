@@ -40,7 +40,7 @@ jobs:
       # 保存
       - name: Save version
         run: |
-          echo '{"version":$SOURCE_TAG}' > version.json
+          echo '{"version":`echo $SOURCE_TAG`}' > version.json
       # 保存
       - name: Cat version
         run: |
