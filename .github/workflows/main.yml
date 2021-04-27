@@ -50,7 +50,7 @@ jobs:
       # 保存
       - name: Cat version
         run: |
-          cat version.dart
+          cat lib/version.dart
       # 发布到 内部服务器
       - name: Release apk to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
