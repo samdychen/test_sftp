@@ -48,6 +48,7 @@ jobs:
       - name: Cat version
         run: |
           cat version.json
+          cat version.dart
       # 发布到 内部服务器
       - name: Release apk to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
