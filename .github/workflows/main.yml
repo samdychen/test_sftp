@@ -37,6 +37,14 @@ jobs:
           SOURCE_NAME: ${{ steps.branch_name.outputs.SOURCE_NAME }}
           SOURCE_BRANCH: ${{ steps.branch_name.outputs.SOURCE_BRANCH }}
           SOURCE_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
+      # 保存
+      - name: Save version
+        run: |
+          echo '{"version":$SOURCE_TAG}' > version.json
+      # 保存
+      - name: Cat version
+        run: |
+          cat version.json
       # 发布到 内部服务器
       - name: Release apk to server
         uses: wlixcc/SFTP-Deploy-Action@v1.0
