@@ -40,7 +40,10 @@ jobs:
       # 保存
       - name: Save version
         run: |
-          echo '{"version":"${{ steps.branch_name.outputs.SOURCE_TAG }}""}' > version.json
+          echo '{"version":"${{ steps.branch_name.outputs.SOURCE_TAG }}"}' > version.json
+          echo 'class APP_VERSION {' > version.dart
+          echo '  static const String RELEASE = "${{ steps.branch_name.outputs.SOURCE_TAG }}"' >> version.dart
+          echo '}' >> version.dart
       # 保存
       - name: Cat version
         run: |
