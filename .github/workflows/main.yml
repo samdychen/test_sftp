@@ -27,22 +27,26 @@ jobs:
           echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
           echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
           echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+          echo ::set-output name=SOURCE_DATE::$(date +'%Y-%m-%d')
       # 使用仓库信息
       - name: Build base image
         run: |
           echo $SOURCE_NAME
           echo $SOURCE_BRANCH
           echo $SOURCE_TAG
+          echo $SOURCE_DATE
         env:
           SOURCE_NAME: ${{ steps.branch_name.outputs.SOURCE_NAME }}
           SOURCE_BRANCH: ${{ steps.branch_name.outputs.SOURCE_BRANCH }}
           SOURCE_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
+          SOURCE_DATE: ${{ steps.branch_name.outputs.SOURCE_DATE }}
       # 保存
       - name: Save version
         run: |
           echo '{"version":"${{ steps.branch_name.outputs.SOURCE_TAG }}"}' > version.json
           echo 'class APP_VERSION {' > version.dart
           echo '  static const String RELEASE = "${{ steps.branch_name.outputs.SOURCE_TAG }}"' >> version.dart
+          echo '  static const String RELEASE_DATE = "${{ steps.branch_name.outputs.SOURCE_DATE }}"' >> version.dart
           echo '}' >> version.dart
       # 保存
       - name: Cat version
