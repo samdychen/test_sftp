@@ -43,15 +43,13 @@ jobs:
       # 保存
       - name: Save version
         run: |
-          echo '{"version":"${{ steps.branch_name.outputs.SOURCE_TAG }}"}' > version.json
-          echo 'class APP_VERSION {' > version.dart
-          echo '  static const String RELEASE = "${{ steps.branch_name.outputs.SOURCE_TAG }}"' >> version.dart
-          echo '  static const String RELEASE_DATE = "${{ steps.branch_name.outputs.SOURCE_DATE }}"' >> version.dart
-          echo '}' >> version.dart
+          echo 'class APP_VERSION {' > lib/version.dart
+          echo '  static const String RELEASE = "${{ steps.branch_name.outputs.SOURCE_TAG }}";' >> lib/version.dart
+          echo '  static const String RELEASE_DATE = "${{ steps.branch_name.outputs.SOURCE_DATE }}";' >> lib/version.dart
+          echo '}' >> lib/version.dart
       # 保存
       - name: Cat version
         run: |
-          cat version.json
           cat version.dart
       # 发布到 内部服务器
       - name: Release apk to server
