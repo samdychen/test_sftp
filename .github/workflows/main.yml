@@ -40,12 +40,6 @@ jobs:
           SOURCE_BRANCH: ${{ steps.branch_name.outputs.SOURCE_BRANCH }}
           SOURCE_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
           SOURCE_DATE: ${{ steps.branch_name.outputs.SOURCE_DATE }}
-      # 代码扫描
-      - name: SonarQube Scan
-      uses: kitabisa/sonarqube-action@v1.1.0
-      with:
-        host: ${{ secrets.SONARQUBE_HOST }}
-        login: ${{ secrets.SONARQUBE_TOKEN }}
       # # 保存
       # - name: Save version
       #   run: |
