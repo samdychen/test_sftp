@@ -1,11 +1,11 @@
 # build.yml
 
 # 工作流程的名字
-name: scan code on push
+name: scan code on pull_request
 
 # 工作流程触发的时机，这里是当一个版本标签推送到仓库时触发
 on:
-  push
+  pull_request
 
 # 这个工作流程需要执行的任务
 jobs:

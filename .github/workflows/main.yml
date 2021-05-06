@@ -40,6 +40,16 @@ jobs:
           SOURCE_BRANCH: ${{ steps.branch_name.outputs.SOURCE_BRANCH }}
           SOURCE_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
           SOURCE_DATE: ${{ steps.branch_name.outputs.SOURCE_DATE }}
+      - name: Deploy docker instance to google compute engine
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.COMPUTE_ENGINE_HOST }}
+          username: ${{ secrets.COMPUTE_ENGINE_USERNAME }}
+          key: ${{ secrets.COMPUTE_ENGINE_PRIVATE_KEY }}
+          port: ${{ secrets.COMPUTE_ENGINE_PORT }}
+          script: |
+            whoami
+            ls -al
       # # 保存
       # - name: Save version
       #   run: |
