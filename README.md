@@ -13,3 +13,4 @@ docker run \
 /Users/samdychen/Downloads/sonar-scanner-4.6.1.2450-macosx/bin/sonar-scanner -Dsonar.login=72b78f100fbde54c6613b51e1ca5db2566ef59b0
 - 测试click up集成
 - 测试click up集成2
+- 测试click up集成3
